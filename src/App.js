@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from 'react-router-dom';
+import Header from './components/Navbar/Navbar';
+import Routing from './components/Routing/Route';
+import { createStore } from 'redux';
+import reducer from './redux/reducers/reducer'
+import Footer from './components/Footer/Footer';
+import Cart from './components/Cart/Cart';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const store = createStore(reducer);
+
+const App = () => {
+    const [showCart, setShowCart] = useState(false);
+    const handleCloseCart = () => setShowCart(false);
+    const handleShowCart = () => setShowCart(true);
+    return (
+        <Provider store={store}>
+            <React.Suspense fallback={<div>Loading...</div>}>
+                <Router>
+                    <Header handleShowCart={handleShowCart}/>
+                    <Routing />
+                    <Footer />
+                </Router>
+                <Cart showCart={showCart} handleCloseCart={handleCloseCart} handleShowCart={handleShowCart}/>
+            </React.Suspense>
+        </Provider>
+    )
 }
 
-export default App;
+export default App; 

@@ -1,0 +1,6 @@
+.footer{
+    display: sticky;
+    background-color: #ddd;
+    text-align: center;
+    height: 30px;
+}
