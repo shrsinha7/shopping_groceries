@@ -290,7 +290,6 @@ class Product extends Component {
         }
      }
     filterProducts = (id)=>{
-        console.log(id)
         if (id !== "") {
             let filtered
             if(id!=='product') filtered=this.state.productData.filter((product) => product.category === id)
@@ -298,7 +297,6 @@ class Product extends Component {
            this.setState({
             productData:filtered
            })
-           console.log(filtered)
           }
     } 
     render() { 
@@ -308,7 +306,7 @@ class Product extends Component {
                 <Categorytabs/>
             </div>
             <div  className="col-md-10">
-                <Productdetails  productList={this.state.productData}/>
+                <Productdetails addToCart={this.props.addToCart} productList={this.state.productData}/>
             </div>
         </div>
         

@@ -34,7 +34,7 @@ class Productdetails extends Component {
                       <Button
                       className="btn-class"
                         size='lg'
-                        // onClick={()=>addToCart(product)}
+                        onClick={()=>this.props.addToCart(data.id)}
                       >
                         Buy Now
                       </Button>

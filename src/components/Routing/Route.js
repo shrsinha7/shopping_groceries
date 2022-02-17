@@ -5,14 +5,15 @@ import Login from '../Login/login'
 import SignUp from '../Signup/signup'
 import Product from '../../containers/Product/product'
 
-export default function Routing() {
+export default function Routing(props) {
+  const {addToCart} = props
   return (
     <>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/signUp" element={<SignUp/>} />
-          <Route path="/product" element={<Product/>} />
+          <Route path="/product" element={<Product addToCart={addToCart}/>} />
           <Route path="/product/:id" element={<Product/>} />
           {/* <Route path="*" exact={true} component={PageNotFound} /> */}
         </Routes>
